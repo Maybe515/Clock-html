@@ -1,0 +1,166 @@
+:root {
+  /* カラーテーマ */
+  --color-primary: lightcoral;
+  --color-bg: white;
+  --color-text: black;
+  --color-seconds: red;
+  --color-center-inner: silver;
+
+  /* フォント */
+  --font-family: sans-serif;
+
+  /* デジタル時計 */
+  --date-font-size: 40px;
+  --clock-font-size: 40px;
+
+  /* アナログ時計 */
+  --analog-size: 500px;
+  --analog-border: 10px solid var(--color-text);
+  --analog-number-size: 4em;
+
+  /* 針の太さ */
+  --hand-seconds-width: 5px;
+  --hand-minutes-width: 10px;
+  --hand-hours-width: 10px;
+
+  /* 中心 */
+  --center-size: 21px;
+  --center-inner-size: 17px;
+}
+
+/* 共通デジタル表示 */
+.digital--wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem .5rem;
+}
+
+.digital-display {
+  background-color: var(--color-bg);
+  border-bottom: 3px solid var(--color-primary);
+  font-family: var(--font-family);
+  color: var(--color-text);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 800px) {
+  .digital--wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .digital-display {
+    text-align: center;
+  }
+}
+
+/* 日付, 時計 */
+#date, #clock {
+  font-size: var(--date-font-size);
+}
+
+/* アナログ時計 */
+#analog {
+  position: relative;
+  top: 2rem;
+  left: 2rem;
+  width: var(--analog-size);
+  height: var(--analog-size);
+  text-align: center;
+}
+
+#analog .analog-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: var(--analog-border);
+  border-radius: 50%;
+  background-color: var(--color-bg);
+}
+
+#analog div {
+  box-sizing: content-box;
+}
+
+/* 目盛り */
+.analog-line1,
+.analog-line2 {
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  background: var(--color-text);
+}
+
+.analog-line1 {
+  width: 15px;
+  height: 3px;
+  top: calc(50% - 2px);
+}
+
+.analog-line2 {
+  width: 7px;
+  height: 2px;
+  top: calc(50% - 1px);
+}
+
+/* 数字 */
+.analog-text {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-size: var(--analog-number-size);
+  color: var(--color-text);
+  z-index: 2;
+}
+
+/* 針 */
+.analog-seconds,
+.analog-minutes,
+.analog-hours {
+  position: absolute;
+  border-radius: 5px;
+}
+
+.analog-seconds {
+  width: var(--hand-seconds-width);
+  background-color: var(--color-seconds);
+  z-index: 10;
+}
+
+.analog-minutes {
+  width: var(--hand-minutes-width);
+  background-color: var(--color-text);
+  z-index: 9;
+}
+
+.analog-hours {
+  width: var(--hand-hours-width);
+  background-color: var(--color-text);
+  z-index: 8;
+}
+
+/* 中心 */
+.analog-center,
+.analog-center::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  z-index: 15;
+}
+
+.analog-center {
+  width: var(--center-size);
+  height: var(--center-size);
+  background-color: var(--color-text);
+  transform: translate(-50%, -50%);
+}
+
+.analog-center::after {
+  content: "";
+  width: var(--center-inner-size);
+  height: var(--center-inner-size);
+  background-color: var(--color-center-inner);
+  transform: translate(-50%, -50%);
+}

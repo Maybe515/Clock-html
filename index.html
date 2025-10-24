@@ -1,13 +1,22 @@
-<html><head lang="ja">
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
     <meta charset="utf-8">
     <title>時計【ウェブブラウザ版】</title>
     <link href="stylesheet.css" rel="stylesheet" type="text/css">
-　</head>
-　<body>
-    <div id ="date"></div>
-    <div id ="clock"></div>
-    <div id="analog"></div>
-    <script src="clock_digital.js" charset="utf-8"></script>
-    <script src="clock_analog.js" charset="utf-8"></script>
-　</body>
+</head>
+
+<body>
+    <main>
+        <div class="digital--wrapper">
+            <div id="date" class="digital-display"></div>
+            <div id="clock" class="digital-display"></div>
+        </div>
+        <div id="analog"></div>
+    </main>
+    <script src="./js/clock_digital.js" charset="utf-8"></script>
+    <script src="./js/clock_analog.js" charset="utf-8"></script>
+</body>
+
 </html>
